@@ -1,0 +1,12 @@
+# Ultralytics YOLO 🚀, AGPL-3.0 license
+# Default YOLO tracker settings for ByteTrack tracker https://github.com/ifzhang/ByteTrack
+# 这些设置涉及到目标跟踪器 ByteTrack 的默认配置。ByteTrack 是一个开源项目，用于目标跟踪。它基于相关性匹配来实现目标的连续跟踪。其中的参数控制关联阈值、轨迹缓冲区和最小框面积等设置。
+
+tracker_type: bytetrack  # tracker type, ['botsort', 'bytetrack']
+track_high_thresh: 0.5  # threshold for the first association
+track_low_thresh: 0.1  # threshold for the second association
+new_track_thresh: 0.6  # threshold for init new track if the detection does not match any tracks
+track_buffer: 30  # buffer to calculate the time when to remove tracks
+match_thresh: 0.8  # threshold for matching tracks
+# min_box_area: 10  # threshold for min box areas(for tracker evaluation, not used for now)
+# mot20: False  # for tracker evaluation(not used for now)

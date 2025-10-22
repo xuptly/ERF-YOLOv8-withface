@@ -1,0 +1,121 @@
+# Ultralytics YOLO 🚀, AGPL-3.0 license
+# Default training settings and hyperparameters for medium-augmentation COCO training
+# YOLO 模型的配置文件，参数如下：
+
+task: detect  # YOLO task, i.e. detect, segment, classify, pose ：YOLO任务类型，此处为目标检测。
+mode: train  # YOLO mode, i.e. train, val, predict, export, track, benchmark ：YOLO模式，此处为训练模式。
+
+# Train settings -------------------------------------------------------------------------------------------------------
+model: /root/autodl-tmp/yolov8/weights/v4s.pt # (添加)path to model file, i.e. yolov8n.pt, yolov8n.yaml ：模型文件的路径，值定一个预训练模型的位置。
+data: /root/autodl-tmp/yolov8/ultralytics/datasets/bdd-multi.yaml # (添加)path to data file, i.e. coco128.yaml ：数据文件路径，指定一个数据集文件的位置。
+epochs: 100  # number of epochs to train for：训练的轮数
+patience: 50  # epochs to wait for no observable improvement for early stopping of training: 当连续多少个轮次没有观察到改进时，提前停止训练。
+batch: 16  # number of images per batch (-1 for AutoBatch): 每个批次中的图像数量。
+imgsz: 640  # size of input images as integer or w,h: 输入图像的大小。
+save: True  # save train checkpoints and predict results: 是否保存训练的检查点和预测结果。
+save_period: 20 # (修改-1)Save checkpoint every x epochs (disabled if < 1): 每隔多少个轮次保存一次检查点（如果小于1，则禁用）。
+cache: True  # True/ram, disk or False. Use cache for data loading: 数据加载时是否使用缓存。
+device: 0 # (添加)device to run on, i.e. cuda device=0 or device=0,1,2,3 or device=cpu: 运行模型的设备，0 表示使用第一个 GPU 设备，如果是 -1 或者 cpu 则表示使用 CPU。
+workers: 8  # number of worker threads for data loading (per RANK if DDP): 数据加载的工作线程数。
+project: # (添加)project name: 项目名称。
+name: /root/autodl-tmp/yolov8/runs/multi/ # (添加)experiment name, results saved to 'project/name' directory: 实验名称，结果将保存在 "project/name" 目录中。
+exist_ok: True  #(修改) whether to overwrite existing experiment: 是否覆盖现有实验结果。
+pretrained: True  #(修改) whether to use a pretrained model: 是否使用预训练模型。
+optimizer: SGD  # optimizer to use, choices=['SGD', 'Adam', 'AdamW', 'RMSProp'] 优化器类型，选择['SGD', 'Adam', 'AdamW', 'RMSProp']之一。
+verbose: True  # whether to print verbose output: 是否打印详细输出。
+seed: 0  # random seed for reproducibility: 随机种子，用于可重复性。
+deterministic: True  # whether to enable deterministic mode: 是否启用确定性模式。
+single_cls: False  # train multi-class data as single-class: 是否将多类数据视为单类来训练。single_cls: False 表示模型用于多类别任务，可以检测和分类多个不同类别的目标。而 single_cls: True 表示模型用于单类别任务，只关注一个特定类别的目标。
+combine_class: None # 组合的类别列表。表示模型将“类”合并为一个类，例如我们的项目将“汽车”、“公共汽车”、“卡车”和“火车”组合成“车辆”。
+rect: False  # rectangular training if mode='train' or rectangular validation if mode='val'如果是'mode=train'则进行矩形训练，如果是'mode=val'则进行矩形验证。
+cos_lr: True  # (自改)use cosine learning rate scheduler: 是否使用余弦学习率调度器。
+close_mosaic: 0  # (int) disable mosaic augmentation for final epochs: 禁用混合增强的最后几个轮次。
+resume: False  # resume training from last checkpoint: 是否从上次检查点恢复训练。
+amp: True  # Automatic Mixed Precision (AMP) training, choices=[True, False], True runs AMP check: 是否使用自动混合精度（AMP）训练。
+# Segmentation
+overlap_mask: True  # masks should overlap during training (segment train only): 在训练期间，标注的分割遮罩是否应该重叠（仅适用于分割训练）。
+mask_ratio: 1  # mask downsample ratio (segment train only): 分割遮罩的降采样比例（仅适用于分割训练）。
+# Classification
+dropout: 0.0  # use dropout regularization (classify train only): 是否使用 dropout 正则化（仅适用于分类训练）。
+
+# Val/Test settings ----------------------------------------------------------------------------------------------------
+val: True  # validate/test during training: 在训练期间是否进行验证/测试。
+split: val  # dataset split to use for validation, i.e. 'val', 'test' or 'train': 用于验证的数据集拆分，可以选择 'val'、'test' 或 'train'。
+save_json: True  # save results to JSON file: 是否将结果保存为 JSON 文件。
+save_hybrid: False  # save hybrid version of labels (labels + additional predictions): 是否保存标签的混合版本（包含标签和额外的预测结果）。
+conf:  # object confidence threshold for detection (default 0.25 predict, 0.001 val): 检测时的目标置信度阈值（默认值 0.25 用于预测，0.001 用于验证）。
+iou: 0.7  # intersection over union (IoU) threshold for NMS: 非极大值抑制 (NMS) 的交并比（IoU）阈值。
+max_det: 300  # maximum number of detections per image: 每张图像的最大检测数量。
+half: False  # use half precision (FP16): 是否使用半精度（FP16）。
+dnn: False  # use OpenCV DNN for ONNX inference: 是否使用 OpenCV DNN 进行 ONNX 推断。
+plots: True  # save plots during train/val: 在训练/验证期间是否保存绘图结果。
+speed: True # ###liuya### calculate the fps follow the hybridnet https://github.com/datvuthanh/HybridNets/blob/main/hybridnets_test.py#L211: 是否计算每秒处理的帧数（根据 HybridNet 计算，参考链接）。
+
+# Prediction settings --------------------------------------------------------------------------------------------------
+source: /root/autodl-tmp/yolov8/ultralytics/assets/bus.jpg # (添加)source directory for images or videos: 图像或视频源的路径。
+show: False  # show results if possible: 如果可能，是否显示结果。
+save_txt: False  # save results as .txt file: 是否将结果保存为 .txt 文件。
+save_conf: False  # save results with confidence scores: 是否保存带有置信度分数的结果。
+save_crop: False  # save cropped images with results: 是否将裁剪后的图像与结果一起保存。
+show_labels: True  # show object labels in plots: 是否在绘图中显示对象标签。标签将默认显示第一个类名。
+show_conf: True  # show object confidence scores in plots: 是否在绘图中显示对象置信度分数。
+vid_stride: 1  # video frame-rate stride: 视频帧率步长。
+line_width:   # line width of the bounding boxes: 边界框的线宽。
+visualize: False  # visualize model features: 是否可视化模型特征。
+augment: False  # apply image augmentation to prediction sources: 是否对预测源应用图像增强。
+agnostic_nms: False  # class-agnostic NMS: 是否使用类别无关的非极大值抑制。
+classes: multi # filter results by class, i.e. class=0, or class=[0,2,3]: 根据类别进行结果过滤，例如class=0或class=[0,2,3]表示只保留特定类别的结果。您可以更改此设置以控制训练中的分类，10 和 11 表示可驾驶区域和车道线分割。您可以在 “./ultralytics/datasets/bdd-multi.yaml” 下创建或更改数据集映射
+retina_masks: False  # use high-resolution segmentation masks: 是否使用高分辨率分割遮罩。
+boxes: True  # Show boxes in segmentation predictions: 在分割预测中是否显示边界框。是否开启分段任务的 bos。
+
+# Export settings ------------------------------------------------------------------------------------------------------
+format: torchscript  # format to export to：导出的格式为 TorchScript。
+keras: False  # use Keras：是否使用 Keras。
+optimize: False  # TorchScript: optimize for mobile：在 TorchScript 中不进行优化以适应移动设备。
+int8: False  # CoreML/TF INT8 quantization：CoreML/TF 使用整型 8 位量化。
+dynamic: False  # ONNX/TF/TensorRT: dynamic axes：ONNX/TF/TensorRT 使用动态轴。
+simplify: False  # ONNX: simplify model：ONNX 模型简化。
+opset:  # ONNX: opset version (optional)：ONNX 的操作集版本（可选）。
+workspace: 4  # TensorRT: workspace size (GB)：TensorRT 的工作空间大小（GB）。
+nms: False  # CoreML: add NMS：在 CoreML 中添加非极大值抑制。
+
+# Hyperparameters ------------------------------------------------------------------------------------------------------
+lr0: 0.01  # initial learning rate (i.e. SGD=1E-2, Adam=1E-3)：初始学习率（例如，SGD=1E-2，Adam=1E-3）。
+lrf: 0.01  # final learning rate (lr0 * lrf)：最终学习率（lr0 * lrf）。
+momentum: 0.937  # SGD momentum/Adam beta1：SGD 动量/Adam beta1。
+weight_decay: 0.0005  # optimizer weight decay 5e-4：优化器的权重衰减（5e-4）。
+warmup_epochs: 3.0  # warmup epochs (fractions ok)：预热阶段的训练轮数（可以使用小数表示部分轮数）。
+warmup_momentum: 0.8  # warmup initial momentum：预热阶段的初始动量。
+warmup_bias_lr: 0.1  # warmup initial bias lr：预热阶段的初始偏置学习率。
+box: 7.5  # box loss gain：边界框损失增益。
+cls: 0.5  # cls loss gain (scale with pixels)：分类损失增益（与像素缩放比例相关）。
+dfl: 1.5  # dfl loss gain：自由形变损失增益。
+TL: 8.0 # TL loss gain：TL（目标列表）损失增益。
+FL: 24.0 # FL loss for segment gain：FL（分割）损失增益。
+pose: 12.0  # pose loss gain：姿态损失增益。
+kobj: 1.0  # keypoint obj loss gain：关键点目标损失增益。
+label_smoothing: 0.0  # label smoothing (fraction)：标签平滑化（比例）。
+nbs: 64  # nominal batch size：批量大小。
+hsv_h: 0.015  # image HSV-Hue augmentation (fraction)：图像 HSV-Hue 调整（比例）。
+hsv_s: 0.7  # image HSV-Saturation augmentation (fraction)：图像 HSV-Saturation 调整（比例）。
+hsv_v: 0.4  # image HSV-Value augmentation (fraction)：图像 HSV-Value 调整（比例）。
+degrees: 0.0  # image rotation (+/- deg)：图像旋转角度（+/- 度）。
+translate: 0.1  # image translation (+/- fraction)：图像平移（+/- 比例）。
+scale: 0.5  # image scale (+/- gain)：图像缩放（+/- 增益）。
+shear: 0.0  # image shear (+/- deg)：图像剪切（+/- 度）。
+perspective: 0.0  # image perspective (+/- fraction), range 0-0.001：图像透视变换（+/- 比例），范围为 0-0.001。
+flipud: 0.0  # image flip up-down (probability)：图像上下翻转的概率。
+fliplr: 0.5  # image flip left-right (probability)：图像左右翻转的概率。
+mosaic: 1.0  # image mosaic (probability)：图像马赛克化的概率。
+mixup: 0.0  # image mixup (probability)图像混合的概率。
+copy_paste: 0.0  # segment copy-paste (probability)：分割任务中复制粘贴的概率。
+binary_mask_threshold: 0.5  # segment task binary mask threshold：分割任务的二值化阈值。
+
+# Custom config.yaml ---------------------------------------------------------------------------------------------------
+cfg:  # for overriding defaults.yaml：用于覆盖 defaults.yaml 的自定义配置。
+
+# Debug, do not modify -------------------------------------------------------------------------------------------------
+v5loader: False  # use legacy YOLOv5 dataloader：使用旧版 YOLOv5 数据加载器的调试选项，不要修改。
+
+# Tracker settings ------------------------------------------------------------------------------------------------------
+tracker: botsort.yaml  # tracker type, ['botsort.yaml', 'bytetrack.yaml']：跟踪器类型，可选择 ['botsort.yaml', 'bytetrack.yaml']。
