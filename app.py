@@ -89,7 +89,7 @@ if st.session_state.uploaded_images:
                 from ultralytics import YOLO
 
                 # 加载模型
-                model_path = "best.pt"
+                model_path = "./best.pt"
 
                 # 文件存在性检查
                 if not os.path.exists(model_path):
