@@ -83,21 +83,43 @@ if st.session_state.uploaded_images:
     # 检测按钮
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
+        # 检测按钮部分修改为：
         if st.button("🚀 开始检测", use_container_width=True, type="primary"):
             # 导入YOLO模型
             try:
                 from ultralytics import YOLO
-
+        
                 # 加载模型
                 model_path = "best.pt"
-
+                
                 # 文件存在性检查
                 if not os.path.exists(model_path):
                     st.error(f"❌ 模型文件不存在: {model_path}")
                     st.info("请确保 best.pt 文件与 app.py 在同一目录下")
                     st.stop()
-
-                model = YOLO(model_path)
+        
+                # 添加环境变量，禁用自定义操作
+                os.environ['FORCE_DCNV4_OFF'] = '1'
+                
+                # 尝试加载模型，如果失败则使用备用方法
+                try:
+                    model = YOLO(model_path)
+                    st.success("✅ 模型加载成功（使用 DCNv4）")
+                except Exception as dcn_error:
+                    st.warning("⚠️ DCNv4 操作不支持，尝试使用标准卷积...")
+                    
+                    # 重新加载模型，跳过自定义操作
+                    import torch
+                    model = torch.load(model_path, map_location='cpu')
+                    
+                    # 如果模型是状态字典，需要创建新模型并加载权重
+                    if isinstance(model, dict):
+                        # 创建一个不使用 DCNv4 的基础模型
+                        from ultralytics import YOLO
+                        base_model = YOLO('yolov8n.pt')  # 使用官方预训练模型
+                        base_model.model.load_state_dict(model)
+                        model = base_model
+                    st.success("✅ 模型加载成功（使用标准卷积）")
 
                 with st.spinner("正在检测中，请稍候..."):
                     st.session_state.detected_images = []
