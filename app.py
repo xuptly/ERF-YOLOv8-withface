@@ -7,9 +7,6 @@ import sys
 from pathlib import Path
 import glob
 
-# Usage1: 首先到达文件目录下 cd ultralytics
-# Usage2：运行文件  streamlit run app.py
-
 # 页面配置
 st.set_page_config(
     page_title="多任务环境感知系统",
@@ -28,6 +25,20 @@ if 'detected_images' not in st.session_state:
     st.session_state.detected_images = []
 if 'temp_dir' not in st.session_state:
     st.session_state.temp_dir = tempfile.mkdtemp()
+
+# 环境诊断信息
+with st.sidebar:
+    st.header("🔧 系统状态")
+    
+    # 检查模型文件
+    onnx_model_path = "best.onnx"
+    if os.path.exists(onnx_model_path):
+        file_size = os.path.getsize(onnx_model_path) / (1024 * 1024)
+        st.success(f"✅ ONNX模型就绪")
+        st.write(f"文件大小: {file_size:.1f} MB")
+    else:
+        st.error(f"❌ ONNX模型未找到")
+        st.info("请确保 best.onnx 在根目录")
 
 # 图片上传
 uploaded_files = st.file_uploader(
@@ -78,48 +89,28 @@ if st.session_state.uploaded_images:
     with col2:
         iou_threshold = st.slider("IOU阈值", 0.1, 1.0, 0.45, 0.05)
     with col3:
-        output_folder = st.text_input("输出文件夹名", "web_predict")
+        max_images = st.slider("最大处理数量", 1, 10, 3, 1)
 
     # 检测按钮
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        # 检测按钮部分修改为：
         if st.button("🚀 开始检测", use_container_width=True, type="primary"):
-            # 导入YOLO模型
             try:
                 from ultralytics import YOLO
-        
-                # 加载模型
-                model_path = "best.pt"
+
+                # 使用 ONNX 模型
+                model_path = "best.onnx"
                 
                 # 文件存在性检查
                 if not os.path.exists(model_path):
-                    st.error(f"❌ 模型文件不存在: {model_path}")
-                    st.info("请确保 best.pt 文件与 app.py 在同一目录下")
+                    st.error(f"❌ ONNX模型文件不存在: {model_path}")
+                    st.info("请确保 best.onnx 文件与 app.py 在同一目录下")
                     st.stop()
-        
-                # 添加环境变量，禁用自定义操作
-                os.environ['FORCE_DCNV4_OFF'] = '1'
-                
-                # 尝试加载模型，如果失败则使用备用方法
-                try:
+
+                # 加载 ONNX 模型
+                with st.spinner("正在加载模型..."):
                     model = YOLO(model_path)
-                    st.success("✅ 模型加载成功（使用 DCNv4）")
-                except Exception as dcn_error:
-                    st.warning("⚠️ DCNv4 操作不支持，尝试使用标准卷积...")
-                    
-                    # 重新加载模型，跳过自定义操作
-                    import torch
-                    model = torch.load(model_path, map_location='cpu')
-                    
-                    # 如果模型是状态字典，需要创建新模型并加载权重
-                    if isinstance(model, dict):
-                        # 创建一个不使用 DCNv4 的基础模型
-                        from ultralytics import YOLO
-                        base_model = YOLO('yolov8n.pt')  # 使用官方预训练模型
-                        base_model.model.load_state_dict(model)
-                        model = base_model
-                    st.success("✅ 模型加载成功（使用标准卷积）")
+                st.success("✅ ONNX 模型加载成功")
 
                 with st.spinner("正在检测中，请稍候..."):
                     st.session_state.detected_images = []
@@ -132,45 +123,74 @@ if st.session_state.uploaded_images:
                     progress_bar = st.progress(0)
                     status_text = st.empty()
 
-                    for i, img_info in enumerate(st.session_state.uploaded_images):
+                    # 限制处理图片数量（避免超时）
+                    images_to_process = st.session_state.uploaded_images[:max_images]
+                    
+                    for i, img_info in enumerate(images_to_process):
                         try:
                             # 更新进度
-                            progress = i / len(st.session_state.uploaded_images)
+                            progress = i / len(images_to_process)
                             progress_bar.progress(progress)
-                            status_text.text(
-                                f"正在处理: {img_info['name']} ({i + 1}/{len(st.session_state.uploaded_images)})")
+                            status_text.text(f"正在处理: {img_info['name']} ({i + 1}/{len(images_to_process)})")
 
                             # 使用模型进行预测
                             results = model.predict(
                                 source=img_info['path'],
-                                imgsz=(640, 640),
-                                device='cpu',
-                                name=output_folder,
+                                imgsz=640,
+                                device='cpu',  # ONNX 模型使用 CPU
+                                conf=conf_threshold,
+                                iou=iou_threshold,
                                 save=True,
                                 project=output_dir,
                                 exist_ok=True,
-                                conf=0.25,
-                                iou=0.45,
-                                show_labels=False
+                                show=False
                             )
 
                             # 查找保存的结果图片
-                            # YOLO通常会在项目目录下创建与输入文件同名的结果文件
-                            result_pattern = os.path.join(output_dir, output_folder, "*.jpg")
-                            result_files = glob.glob(result_pattern)
+                            result_files = []
+                            search_patterns = [
+                                os.path.join(output_dir, "predict*", "*.jpg"),
+                                os.path.join(output_dir, "*", "*.jpg"),
+                                os.path.join(output_dir, "*.jpg")
+                            ]
+                            
+                            for pattern in search_patterns:
+                                result_files.extend(glob.glob(pattern))
+                                if result_files:
+                                    break
 
                             # 找到对应的结果文件
                             result_found = False
+                            original_stem = Path(img_info['name']).stem.lower()
+                            
                             for result_file in result_files:
-                                if Path(img_info['name']).stem in Path(result_file).stem:
-                                    detected_img = Image.open(result_file)
+                                result_stem = Path(result_file).stem.lower()
+                                if original_stem in result_stem:
+                                    try:
+                                        detected_img = Image.open(result_file)
+                                        st.session_state.detected_images.append({
+                                            'name': f"检测_{img_info['name']}",
+                                            'image': detected_img,
+                                            'result_path': result_file
+                                        })
+                                        result_found = True
+                                        break
+                                    except Exception as img_error:
+                                        continue
+
+                            if not result_found and result_files:
+                                # 如果没有精确匹配，使用最新的结果文件
+                                latest_file = max(result_files, key=os.path.getctime)
+                                try:
+                                    detected_img = Image.open(latest_file)
                                     st.session_state.detected_images.append({
-                                        'name': img_info['name'],
+                                        'name': f"检测_{img_info['name']}",
                                         'image': detected_img,
-                                        'result_path': result_file
+                                        'result_path': latest_file
                                     })
                                     result_found = True
-                                    break
+                                except Exception as e:
+                                    pass
 
                             if not result_found:
                                 st.warning(f"未找到图片 {img_info['name']} 的检测结果")
@@ -186,12 +206,19 @@ if st.session_state.uploaded_images:
                         st.success(f"✅ 成功检测 {len(st.session_state.detected_images)} 张图片")
                     else:
                         st.warning("⚠️ 未生成任何检测结果")
+                        st.info("""
+                        可能的原因：
+                        1. 置信度阈值设置过高
+                        2. 图片中没有检测到目标
+                        3. 可以尝试降低阈值重新检测
+                        """)
 
             except ImportError as e:
                 st.error(f"无法导入YOLO模型: {str(e)}")
-                st.info("请检查YOLO路径是否正确配置")
+                st.info("请在 requirements.txt 中添加 ultralytics>=8.0.0")
             except Exception as e:
                 st.error(f"检测过程中出错: {str(e)}")
+                st.write("错误详情:", type(e).__name__)
 
 # 显示检测结果
 if st.session_state.detected_images:
@@ -202,8 +229,9 @@ if st.session_state.detected_images:
         col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown(f"**原图:** {st.session_state.uploaded_images[i]['name']}")
-            st.image(st.session_state.uploaded_images[i]['image'], use_column_width=True)
+            if i < len(st.session_state.uploaded_images):
+                st.markdown(f"**原图:** {st.session_state.uploaded_images[i]['name']}")
+                st.image(st.session_state.uploaded_images[i]['image'], use_column_width=True)
 
         with col2:
             st.markdown(f"**检测结果:** {st.session_state.detected_images[i]['name']}")
@@ -229,15 +257,14 @@ with st.sidebar:
     st.markdown("""
     1. **上传图片**: 选择要检测的图片
     2. **调整参数**: 设置置信度和IOU阈值
-    3. **开始检测**: 点击检测按钮运行ERF-YOLOv8模型
+    3. **开始检测**: 点击检测按钮运行模型
     4. **查看结果**: 左右对比查看检测效果
     5. **下载结果**: 点击下载按钮保存检测结果
 
     **支持格式:** JPG, JPEG, PNG, BMP
-    **检测模型:** ERF-YOLOv8
+    **检测模型:** ERF-YOLOv8 (ONNX)
     """)
 
-    st.header("⚙️ 系统状态")
     if st.session_state.uploaded_images:
         st.info(f"📤 已上传 {len(st.session_state.uploaded_images)} 张图片")
     else:
@@ -271,7 +298,6 @@ with st.sidebar:
 if not st.session_state.uploaded_images and not st.session_state.detected_images:
     st.info("👆 请上传一张或多张图片进行目标检测")
 
-
 # 清理函数
 def cleanup():
     if 'temp_dir' in st.session_state and os.path.exists(st.session_state.temp_dir):
@@ -280,8 +306,6 @@ def cleanup():
         except:
             pass
 
-
 # 注册清理函数
 import atexit
-
 atexit.register(cleanup)
