@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c20dd69a-f642-4e42-8282-afef17a80d48" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/ERF-YOLOv8.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ultralytics/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ultralytics/train.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2WsFQ9kP3XRW1kZ0TaozOwiB1z4" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.app (1).executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.check_environment.executor": "Run",
+    "Python.check_gpu_detailed.executor": "Run",
+    "Python.predict.executor": "Run",
+    "Python.predict_video.executor": "Run",
+    "Python.testenv.executor": "Run",
+    "Python.verify_cuda_installation.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "credentialsType com.jetbrains.python.remote.PyCreateRemoteInterpreterDialog$PyCreateRemoteSdkForm": "Web 部署",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/YOLOPv2/ERF-YOLOv8-withface/ultralytics/assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\YOLOPv2\ERF-YOLOv8-withface\ultralytics\assets" />
+      <recent name="D:\论文\YOLOP未读\YOLOP改进\YOLOv8-multi-task-main\datasets" />
+      <recent name="D:\论文\YOLOP未读\YOLOP改进\YOLOv8-multi-task-main\ultralytics\datasets\detection-object\labels" />
+      <recent name="D:\论文\YOLOP未读\YOLOP改进\YOLOv8-multi-task-main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\YOLOPv2\ERF-YOLOv8-withface" />
+      <recent name="D:\论文\YOLOP未读\YOLOP改进\YOLOv8-multi-task-main\datasets\images" />
+      <recent name="D:\论文\YOLOP未读\YOLOP改进\YOLOv8-multi-task-main\ultralytics\datasets" />
+      <recent name="D:\论文\YOLOP未读\YOLOP改进\YOLOv8-multi-task-main\datasets\ll_seg_annotations\labels\train" />
+      <recent name="D:\论文\YOLOP未读\YOLOP改进\YOLOv8-multi-task-main\datasets\ll_seg_annotations\labels" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.app (1)">
+    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ERF-YOLOv8" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ERF-YOLOv8" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ultralytics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\YOLOPv2\ERF-YOLOv8-withface\app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="predict" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ERF-YOLOv8" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ultralytics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ultralytics/predict.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="predict_video" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ERF-YOLOv8" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ultralytics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ultralytics/predict_video.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testenv" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ERF-YOLOv8" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ultralytics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ultralytics/testenv.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="ERF-YOLOv8" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ultralytics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ultralytics/train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app (1)" />
+        <item itemvalue="Python.app" />
+        <item itemvalue="Python.predict_video" />
+        <item itemvalue="Python.predict" />
+        <item itemvalue="Python.testenv" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-PY-252.23892.439" />
+        <option value="bundled-python-sdk-b3ae9b5d7125-f0eec537fc84-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.23892.439" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+    <option name="myConnectionType" value="NONE" />
+    <option name="myConnectionId" value="" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="c20dd69a-f642-4e42-8282-afef17a80d48" name="变更" comment="" />
+      <created>1697513362182</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697513362182</updated>
+      <workItem from="1697513363450" duration="411000" />
+      <workItem from="1697523338881" duration="4000" />
+      <workItem from="1698305465338" duration="1008000" />
+      <workItem from="1698306647800" duration="2619000" />
+      <workItem from="1698369103632" duration="4678000" />
+      <workItem from="1698376390190" duration="2453000" />
+      <workItem from="1698653396161" duration="133000" />
+      <workItem from="1698653570047" duration="4129000" />
+      <workItem from="1698714022117" duration="9805000" />
+      <workItem from="1698731103143" duration="4704000" />
+      <workItem from="1698736366752" duration="746000" />
+      <workItem from="1698737139687" duration="7615000" />
+      <workItem from="1698745810480" duration="261000" />
+      <workItem from="1698976416922" duration="5466000" />
+      <workItem from="1698982713001" duration="864000" />
+      <workItem from="1698991277470" duration="8149000" />
+      <workItem from="1699236732792" duration="797000" />
+      <workItem from="1699238166647" duration="4206000" />
+      <workItem from="1699250031087" duration="568000" />
+      <workItem from="1699498543316" duration="1891000" />
+      <workItem from="1699501377698" duration="294000" />
+      <workItem from="1699502020415" duration="772000" />
+      <workItem from="1699586871365" duration="1559000" />
+      <workItem from="1699595503131" duration="5998000" />
+      <workItem from="1700442334390" duration="1427000" />
+      <workItem from="1700444592865" duration="4364000" />
+      <workItem from="1700459557969" duration="6239000" />
+      <workItem from="1700550059624" duration="4007000" />
+      <workItem from="1700615946054" duration="4762000" />
+      <workItem from="1700704902040" duration="1693000" />
+      <workItem from="1701314693569" duration="1486000" />
+      <workItem from="1701325900891" duration="1720000" />
+      <workItem from="1701337053889" duration="45000" />
+      <workItem from="1701411669303" duration="10562000" />
+      <workItem from="1704361638404" duration="150000" />
+      <workItem from="1705281490489" duration="3630000" />
+      <workItem from="1705626371735" duration="5640000" />
+      <workItem from="1705633641899" duration="2298000" />
+      <workItem from="1705643571829" duration="1067000" />
+      <workItem from="1705644986008" duration="5242000" />
+      <workItem from="1706144702224" duration="614000" />
+      <workItem from="1706490431855" duration="1253000" />
+      <workItem from="1706508141009" duration="181000" />
+      <workItem from="1706508361901" duration="1135000" />
+      <workItem from="1706576874700" duration="1285000" />
+      <workItem from="1707013966391" duration="2054000" />
+      <workItem from="1707029857071" duration="5984000" />
+      <workItem from="1708998602000" duration="3444000" />
+      <workItem from="1709013362684" duration="7841000" />
+      <workItem from="1709084846836" duration="2026000" />
+      <workItem from="1709087858365" duration="591000" />
+      <workItem from="1709101128411" duration="594000" />
+      <workItem from="1709169765582" duration="8117000" />
+      <workItem from="1709186230952" duration="6766000" />
+      <workItem from="1709255035585" duration="464000" />
+      <workItem from="1709257392697" duration="3330000" />
+      <workItem from="1709263431923" duration="6156000" />
+      <workItem from="1709515038387" duration="5032000" />
+      <workItem from="1709541359151" duration="2402000" />
+      <workItem from="1709602193691" duration="5360000" />
+      <workItem from="1709619367903" duration="7528000" />
+      <workItem from="1709687724257" duration="6539000" />
+      <workItem from="1709704324324" duration="8464000" />
+      <workItem from="1709779491349" duration="3496000" />
+      <workItem from="1709791231645" duration="12685000" />
+      <workItem from="1709860004650" duration="5982000" />
+      <workItem from="1709877182000" duration="847000" />
+      <workItem from="1710209289014" duration="1499000" />
+      <workItem from="1710465069404" duration="5475000" />
+      <workItem from="1710481973819" duration="11207000" />
+      <workItem from="1710724090042" duration="816000" />
+      <workItem from="1710999773665" duration="5475000" />
+      <workItem from="1711008089633" duration="520000" />
+      <workItem from="1759289678963" duration="696000" />
+      <workItem from="1759290486921" duration="3141000" />
+      <workItem from="1759299960415" duration="1739000" />
+      <workItem from="1759484303479" duration="1126000" />
+      <workItem from="1759487194259" duration="152000" />
+      <workItem from="1759816189838" duration="4692000" />
+      <workItem from="1760150318927" duration="810000" />
+      <workItem from="1760770572895" duration="484000" />
+      <workItem from="1760771735958" duration="5724000" />
+      <workItem from="1760777821021" duration="3001000" />
+      <workItem from="1761046677474" duration="1219000" />
+      <workItem from="1761114096888" duration="1329000" />
+      <workItem from="1761115677869" duration="833000" />
+      <workItem from="1761130676865" duration="3485000" />
+      <workItem from="1761181863585" duration="175000" />
+      <workItem from="1761182116677" duration="1699000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ultralytics/yolo/data/utils.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/YOLOv8_multi_task_main$verify_cuda_installation.coverage" NAME="verify_cuda_installation 覆盖结果" MODIFIED="1759300088124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/YOLOv8_multi_task_main$predict.coverage" NAME="predict 覆盖结果" MODIFIED="1759301607768" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ultralytics" />
+    <SUITE FILE_PATH="coverage/YOLOv8_multi_task_main$train.coverage" NAME="train 覆盖结果" MODIFIED="1709862356296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ultralytics" />
+    <SUITE FILE_PATH="coverage/YOLOv8_multi_task_main$check_environment.coverage" NAME="check_environment 覆盖结果" MODIFIED="1759291862393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ERF_YOLOv8$predict.coverage" NAME="predict 覆盖结果" MODIFIED="1760150424147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ultralytics" />
+    <SUITE FILE_PATH="coverage/ERF_YOLOv8_withface$app__1_.coverage" NAME="app (1) 覆盖结果" MODIFIED="1761183757925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ERF_YOLOv8_withface$testenv.coverage" NAME="testenv 覆盖结果" MODIFIED="1760774477931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ultralytics" />
+    <SUITE FILE_PATH="coverage/ERF_YOLOv8_withface$predict.coverage" NAME="predict 覆盖结果" MODIFIED="1760778005488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ultralytics" />
+    <SUITE FILE_PATH="coverage/ERF_YOLOv8_withface$app.coverage" NAME="app 覆盖结果" MODIFIED="1761130799797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ultralytics" />
+    <SUITE FILE_PATH="coverage/YOLOv8_multi_task_main$check_gpu_detailed.coverage" NAME="check_gpu_detailed 覆盖结果" MODIFIED="1759292136853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ERF_YOLOv8_withface$predict_video.coverage" NAME="predict_video 覆盖结果" MODIFIED="1760780715633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ultralytics" />
+  </component>
+</project>
